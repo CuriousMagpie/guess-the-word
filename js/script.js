@@ -14,7 +14,7 @@ let remainingGuesses = 8;
 const getWord = async function() {
   const request = await fetch ("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
   const data = await request.text();
-  console.log(data);
+  // console.log(data);
   const wordArray = data.split("\n");
   const randomIndex = Math.floor(Math.random() * wordArray.length);
   word = wordArray[randomIndex].trim();
@@ -26,7 +26,7 @@ getWord();
 const placeholder = function(word) {
   const placeholderLetters = [];
   for (const letter of word) {
-    console.log(letter);
+    // console.log(letter);
     placeholderLetters.push("●");
   }
   inProgress.innerText = placeholderLetters.join("");
@@ -37,7 +37,7 @@ button.addEventListener("click", function (e) {
   const guess = playerInput.value;
   playerInput.value = "";
   const goodGuess = validateInput(guess);
-  console.log(goodGuess);
+  // console.log(goodGuess);
   if (goodGuess) {
     makeGuess(guess);
   }
@@ -62,7 +62,7 @@ const makeGuess = function(guess) {
     message.innerText = `That letter has already been guessed. Try again.`;
   } else {
     guessedLetters.push(guess);
-    console.log(guessedLetters);
+    // console.log(guessedLetters);
     showGuessedLetters();
     updateRemainingGuesses(guess);
     updateInProgress(guessedLetters);
@@ -89,7 +89,7 @@ const updateInProgress = function(guessedLetters) {
       revealArray.push("●");
     }
   }
-  console.log(revealArray);
+  // console.log(revealArray);
   inProgress.innerText = revealArray.join("");
   checkIfWon();
 
